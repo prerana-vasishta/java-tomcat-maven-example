@@ -9,4 +9,4 @@ services:
        volumes:
           - ./:/var/www/html/ 
        ports:
-         - 8009:8000
+         - 8010:80
