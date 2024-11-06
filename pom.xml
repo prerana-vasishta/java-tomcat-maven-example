@@ -1,12 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  
   <groupId>com.example</groupId>
   <artifactId>java-tomcat-maven-example</artifactId>
-  <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
   <name>hello Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -14,52 +17,53 @@
       <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
+
     <dependency>
-  <groupId>org.junit.jupiter</groupId>
-  <artifactId>junit-jupiter-api</artifactId>
-  <version>5.8.2</version> <!-- latest JUnit 5 version -->
-  <scope>test</scope>
-</dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.8.2</version> <!-- latest JUnit 5 version -->
+      <scope>test</scope>
+    </dependency>
 
-<dependency>
-  <groupId>org.junit.jupiter</groupId>
-  <artifactId>junit-jupiter-engine</artifactId>
-  <version>5.8.2</version> <!-- latest JUnit 5 version -->
-  <scope>test</scope>
-</dependency>
-
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.8.2</version> <!-- latest JUnit 5 version -->
+      <scope>test</scope>
+    </dependency>
   </dependencies>
+
   <build>
     <finalName>java-tomcat-maven-example</finalName>
     <plugins>
+      <!-- Exec Maven Plugin -->
       <plugin>
-      <groupId>org.codehaus.mojo</groupId>
-      <artifactId>exec-maven-plugin</artifactId>
-      <version>3.0.0</version>
-      <executions>
-        <execution>
-          <goals>
-            <goal>java</goal>
-          </goals>
-          <configuration>
-            <mainClass>org.codehaus.mojo.webapp.runner.WebAppRunner</mainClass>
-            <arguments>
-              <argument>target/dependency/webapp-runner.jar</argument>
-            </arguments>
-          </configuration>
-        </execution>
-      </executions>
-    </plugin>
-      <build>
-  <plugins>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-war-plugin</artifactId>
-      <version>3.3.1</version>  <!-- Updated version -->
-    </plugin>
-  </plugins>
-</build>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>org.codehaus.mojo.webapp.runner.WebAppRunner</mainClass>
+              <arguments>
+                <argument>target/dependency/webapp-runner.jar</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
 
+      <!-- Maven WAR Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.1</version>  <!-- Updated version -->
+      </plugin>
+
+      <!-- Maven Dependency Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
@@ -67,7 +71,9 @@
         <executions>
           <execution>
             <phase>package</phase>
-            <goals><goal>copy</goal></goals>
+            <goals>
+              <goal>copy</goal>
+            </goals>
             <configuration>
               <artifactItems>
                 <artifactItem>
@@ -81,15 +87,18 @@
           </execution>
         </executions>
       </plugin>
+
+      <!-- Maven Surefire Plugin -->
       <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-surefire-plugin</artifactId>
-      <version>3.0.0-M5</version>
-      <configuration>
-        <testFailureIgnore>false</testFailureIgnore>
-        <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
-      </configuration>
-    </plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+        <configuration>
+          <testFailureIgnore>false</testFailureIgnore>
+          <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
+
 </project>
