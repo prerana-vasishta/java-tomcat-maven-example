@@ -1,0 +1,19 @@
+version: '1'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  # Exposing port 8080 for Tomcat
+    networks:
+      - app-network
+    environment:
+      - JAVA_OPTS=-Djava.awt.headless=true
+    volumes:
+      - ./logs:/usr/local/tomcat/logs  # Optional: Mount logs for debugging
+
+networks:
+  app-network:
+    driver: bridge
