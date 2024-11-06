@@ -14,7 +14,7 @@ RUN mvn clean package
 FROM tomcat:9-jdk17
 
 # Expose Tomcat's default port
-EXPOSE 8000
+EXPOSE 80
 
 # Start Tomcat
 CMD ["catalina.sh", "run"]
