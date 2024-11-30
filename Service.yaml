@@ -9,4 +9,4 @@ spec:
     - protocol: TCP
       port: 8083  # External port exposed by the service
       targetPort: 8083  # Internal port in the container
-  type: Nodeport  # Can also use NodePort or ClusterIP
+  type: NodePort  # Can also use NodePort or ClusterIP
