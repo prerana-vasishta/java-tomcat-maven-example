@@ -15,7 +15,7 @@ spec:
         app: javaapp
     spec:
       containers:
-      - name: javaapp
+      - name: jenkins123
         image: prevasishta98/javaapp:latest11
         ports:
         - containerPort: 5000
