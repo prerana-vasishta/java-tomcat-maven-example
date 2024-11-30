@@ -8,8 +8,7 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 COPY target/*.war /usr/local/tomcat/webapps/
 
 # Change the port Tomcat listens on (from default 8080 to 8000)
-RUN sed -i 's/8080/8003/g' /usr/local/tomcat/conf/server.xml
+RUN sed -i 's/8080/8000/g' /usr/local/tomcat/conf/server.xml
 
 # Expose the Tomcat HTTP port on 8000
-EXPOSE 8003
-
+EXPOSE 8000
