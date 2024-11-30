@@ -18,4 +18,4 @@ spec:
       - name: jenkins123
         image: prevasishta98/javaapp:latest11
         ports:
-        - containerPort: 8901
+        - containerPort: 5000
